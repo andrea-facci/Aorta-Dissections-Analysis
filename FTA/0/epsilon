@@ -1,0 +1,92 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 5.61;
+
+boundaryField
+{
+    Inlet
+    {
+        type            fixedValue;
+        value           uniform 5.61;
+    }
+    Out_Renale_sx
+    {
+        type            zeroGradient;
+    }
+    Out_succlavia
+    {
+        type		zeroGradient;
+    }
+    Out_Tronco_anonimo
+    {
+        type		zeroGradient;
+    }
+    Out_carotide_dx
+    {
+        type  		zeroGradient;
+    }
+    Out_Carotide_sx
+    {
+ 	type		zeroGradient;
+    }
+    Out_Tripode
+    {
+        type		zeroGradient;
+    }
+    Out_Mesenterica
+    {
+        type		zeroGradient;
+    }
+    Out_Renale_dx
+    {
+        type		zeroGradient;
+    }
+    Out_Iliaca_dx
+    {
+        type		zeroGradient;
+    }
+    Out_Iliaca_sx
+    {
+        type		zeroGradient;
+    }
+    Out_Iliaca_sx_falso_lume
+    {
+        type		zeroGradient;
+    }
+    Falso_lume
+    {
+        type            fixedValue;
+        value           uniform 10e-10;
+    }
+    True_lumen
+    {
+        type            fixedValue;
+        value           uniform 10e-10;
+    }
+    Allungamenti
+    {
+        type           fixedValue;
+        value          uniform 10e-10;
+    }
+     
+}
+
+
+// ************************************************************************* //
