@@ -1,0 +1,522 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pisoFoam;
+
+startFrom       startTime;  
+
+startTime      0; 
+
+stopAt          endTime;
+
+endTime         4;
+
+deltaT          0.001;
+
+writeControl adjustableRunTime;
+writeInterval   5e-2;
+
+//writeControl    timeStep;
+
+//writeInterval   1;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   3;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxCo           0.8;
+
+functions
+{
+      #includeFunc "flowRatePatch(name=Inlet)"
+      #includeFunc "flowRatePatch(name=Out_Renale_dx)"
+      #includeFunc "flowRatePatch(name=Out_succlavia)"
+      #includeFunc "flowRatePatch(name=Out_Tronco_anonimo)"
+      #includeFunc "flowRatePatch(name=Out_carotide_dx)"
+      #includeFunc "flowRatePatch(name=Out_Carotide_sx)"
+      #includeFunc "flowRatePatch(name=Out_Tripode)"
+      #includeFunc "flowRatePatch(name=Out_Mesenterica)"
+      #includeFunc "flowRatePatch(name=Out_Renale_sx)"
+      #includeFunc "flowRatePatch(name=Out_Iliaca_dx)"
+      #includeFunc "flowRatePatch(name=Out_Iliaca_sx)"
+      #includeFunc "flowRatePatch(name=Out_Iliaca_sx_falso_lume)"
+      
+      #includeFunc "patchAverage(name=Inlet,p)" 
+      #includeFunc "patchAverage(name=Out_Renale_dx,p)"
+      #includeFunc "patchAverage(name=Out_succlavia,p)"
+      #includeFunc "patchAverage(name=Out_Tronco_anonimo,p)"
+      #includeFunc "patchAverage(name=Out_carotide_dx,p)"
+      #includeFunc "patchAverage(name=Out_Carotide_sx,p)"
+      #includeFunc "patchAverage(name=Out_Tripode,p)"
+      #includeFunc "patchAverage(name=Out_Mesenterica,p)"
+      #includeFunc "patchAverage(name=Out_Renale_sx,p)"
+      #includeFunc "patchAverage(name=Out_Iliaca_dx,p)"
+      #includeFunc "patchAverage(name=Out_Iliaca_sx,p)"
+      #includeFunc "patchAverage(name=Out_Iliaca_sx_falso_lume,p)" 
+
+
+      #includeFunc "residuals"
+ //  #include "surfaces"
+
+}
+functions
+{
+surfaceFieldValueP(inlet)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+           point   (0.185377 -0.172963 -0.0689813);
+            normal  (0 0 1);
+         }
+         
+        zone inlet;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            inlet;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outcarotidedx)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.155099 -0.211513 -0.00482048);
+            normal  (-0.370441 0.0170197 0.9284);
+         }
+         
+        zone Outcarotidedx;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outcarotidedx;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outtroncoanonimo)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.157272 -0.223036 -0.00410336);
+            normal  (-0.004650 0.160245 0.987066);
+         }
+         
+        zone Outtroncoanonimo;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outtroncoanonimo;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outsucclavia)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.1547 -0.2369 -0.00294129);
+            normal  (-0.227395 -0.0134495 0.97371);
+         }
+         
+        zone Outsucclavia;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outsucclavia;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outcarotidesx)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.192384 -0.221579 -0.00684742);
+            normal  (0.570977 -0.415675 0.707954);
+         }
+         
+        zone Outcarotidesx;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outcarotidesx;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outmesenterica)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.212575 -0.188317 -0.252964);
+            normal  (-0.0778431 0.768223 -0.635432);
+         }
+         
+        zone Outmesenterica;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outmesenterica;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Outtripode)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.207585 -0.204231 -0.239412);
+            normal  (0.310661 0.848833 0.427752);
+         }
+         
+        zone Outtripode;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outtripode;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Outiliacadx)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.157279 -0.203607 -0.393182);
+            normal  (-0.237807 -0.708979 -0.663925);
+         }
+         
+        zone Outiliacadx;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outiliacadx;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Outiliacasx)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.21703 -0.195963 -0.394311);
+            normal  (0.65866 -0.348955 -0.668632);
+         }
+         
+        zone Outiliacasx;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outiliacasx;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Outiliacasxfalsolume)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.230634 -0.207854 -0.396113);
+            normal  (0.676684 -0.09663 -0.729904);
+         }
+         
+        zone Outiliacasxfalsolume;
+        exposedPatchName Falso_lume;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outiliacasxfalsolume;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Outrenaledx)
+  {
+    regionType   sampleadSurface;
+    name   sampleSurfaceDict;
+    sampledSurfaceDict
+   {
+      type    cuttingPlane;
+      planeType     pointAndNormal;
+      pointAndNormalDict
+     {
+       point (0.187575 -0.193689 -0.30447);
+      normal (-0.936529 0.20999 0.28082);
+     }
+     zone  Outrenaledx;
+      exposedPatchName  Falso_lume;
+     interpolate  true;
+  }
+     type surfaceFieldValue;
+     libs    ("libfieldFunctionObjects.so")
+     writeControl  adjustableRunTime;
+     writeInterval  0.005;
+    log no;
+    writeFields  no;
+    regionType   sampledSurface;
+    name   Outrenaledx;
+   operation  areaAverage;
+   fields
+   (p);
+  }
+surfaceFieldValueP(Outrenalesx)
+  {
+    regionType   sampleadSurface;
+    name   sampleSurfaceDict;
+    sampledSurfaceDict
+   {
+      type    cuttingPlane;
+      planeType     pointAndNormal;
+      pointAndNormalDict
+     {
+       point (0.186823 -0.193818 -0.304583);
+      normal (-0.887592 0.27543 0.369214);
+     }
+     zone  Outrenalesx;
+      exposedPatchName  True_lumen;
+     interpolate  true;
+  }
+     type surfaceFieldValue;
+     libs    ("libfieldFunctionObjects.so")
+     writeControl  adjustableRunTime;
+     writeInterval  0.005;
+    log no;
+    writeFields  no;
+    regionType   sampledSurface;
+    name   Outrenalesx;
+   operation  areaAverage;
+   fields
+   (p);
+  }
+surfaceFieldValueP(Outrenaledx_bis)
+  {
+    regionType   sampleadSurface;
+    name   sampleSurfaceDict;
+    sampledSurfaceDict
+   {
+      type    cuttingPlane;
+      planeType     pointAndNormal;
+      pointAndNormalDict
+     {
+       point (0.195096 -0.195959 -0.264437);
+      normal (-0.91414 0.311204 -0.259807);
+     }
+     zone  Outrenaledx;
+      exposedPatchName  Falso_lume;
+     interpolate  true;
+  }
+     type surfaceFieldValue;
+     libs    ("libfieldFunctionObjects.so")
+     writeControl  adjustableRunTime;
+     writeInterval  0.005;
+    log no;
+    writeFields  no;
+    regionType   sampledSurface;
+    name   Outrenaledx_bis;
+   operation  areaAverage;
+   fields
+   (p);
+  }
+surfaceFieldValueP(Outtripode_bis)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.210705 -0.198218 -0.234334);
+            normal  (0.0205949 0.825874 0.563478);
+         }
+
+        zone Outtripode;
+        exposedPatchName True_lumen;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl adjustableRunTime;
+       writeInterval   0.005;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Outtripode_bis;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+ 
+// ********************************************************************** //
