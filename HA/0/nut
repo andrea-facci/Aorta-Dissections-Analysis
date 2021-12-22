@@ -1,0 +1,108 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      nut;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    Inlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_top_carotidedx_2
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_top_succlaviasx_1
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_top_succlaviadx_3
+    {
+         type       calculated;
+         value      uniform 0;
+    }
+    Out_top_carotidesx_4
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_top_carotideintdx_5
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_lat_celiaca_4
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_lat_mesenterica_3
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_lat_renaledx_2
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_lat_renalesx_1
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_bot_iliacasx_1
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_bot_iliacaintsx_2
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_bot_iliacadx_1
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Out_bot_iliacaintdx_4
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+        
+    Wall
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    Allungamenti
+    {
+        type            calculated;
+        value           uniform 0;
+    }       
+ }   
+
+
+// ************************************************************************* //
