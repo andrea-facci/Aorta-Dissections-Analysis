@@ -1,0 +1,140 @@
+/*------------------------------------------------------------------------------------------------------------*\
+|                                                                                                              | 
+|    ANSA_VERSION: 21.1.2                                                                                      | 
+|                                                                                                              | 
+|    file created by  A N S A  Mon Jun 14 17:39:39 2021                                                        | 
+|                                                                                                              | 
+|    Output from: C:/DOTTORATO/Aorta_sana/Modello ANSA/Mesh4/Aorta_sana_superficie3_volume_poli_ruotata.ansa   | 
+|                                                                                                              | 
+\*------------------------------------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class polyBoundaryMesh;
+	location "";
+	object boundary;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+16
+(
+
+	Out_top_carotidedx_2
+	{
+		type patch;
+		startFace 1189797;
+		nFaces 116;
+	}
+
+	Out_top_succlaviasx_1
+	{
+		type patch;
+		startFace 1189913;
+		nFaces 89;
+	}
+
+	Allungamenti
+	{
+		type wall;
+		startFace 1190002;
+		nFaces 11981;
+	}
+
+	Inlet
+	{
+		type patch;
+		startFace 1201983;
+		nFaces 507;
+	}
+
+	Wall
+	{
+		type wall;
+		startFace 1202490;
+		nFaces 27023;
+	}
+
+	Out_top_succlaviadx_3
+	{
+		type patch;
+		startFace 1229513;
+		nFaces 116;
+	}
+
+	Out_top_carotidesx_4
+	{
+		type patch;
+		startFace 1229629;
+		nFaces 102;
+	}
+
+	Out_top_carotideintdx_5
+	{
+		type patch;
+		startFace 1229731;
+		nFaces 102;
+	}
+
+	Out_lat_celiaca_4
+	{
+		type patch;
+		startFace 1229833;
+		nFaces 113;
+	}
+
+	Out_lat_mesenterica_3
+	{
+		type patch;
+		startFace 1229946;
+		nFaces 116;
+	}
+
+	Out_lat_renaledx_2
+	{
+		type patch;
+		startFace 1230062;
+		nFaces 116;
+	}
+
+	Out_lat_renalesx_1
+	{
+		type patch;
+		startFace 1230178;
+		nFaces 103;
+	}
+
+	Out_bot_iliacasx_1
+	{
+		type patch;
+		startFace 1230281;
+		nFaces 102;
+	}
+
+	Out_bot_iliacaintsx_2
+	{
+		type patch;
+		startFace 1230383;
+		nFaces 116;
+	}
+
+	Out_bot_iliacadx_1
+	{
+		type patch;
+		startFace 1230499;
+		nFaces 92;
+	}
+
+	Out_bot_iliacaintdx_4
+	{
+		type patch;
+		startFace 1230591;
+		nFaces 102;
+	}
+
+)
