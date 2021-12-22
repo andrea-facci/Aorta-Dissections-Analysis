@@ -1,0 +1,160 @@
+/*------------------------------------------------------------------------------------------------------------------------------------*\
+|                                                                                                                                      | 
+|    ANSA_VERSION: 15.2.0                                                                                                              | 
+|                                                                                                                                      | 
+|    file created by  A N S A  Thu May 16 15:02:57 2019                                                                                | 
+|                                                                                                                                      | 
+|    Output from: /home/PapersInProgress/Abbandonati/Aorta/Geometria/Rossi/Completo_reshape_reduce_surf_mesh+Layer+Vol_PolyMesh.ansa   | 
+|                                                                                                                                      | 
+\*------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class volVectorField;
+	location "";
+	object U;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+dimensions [0 1 -1 0 0 0 0];
+
+internalField uniform ( 0. 0. 0. );
+
+
+boundaryField
+{
+	Wall
+	{
+		type fixedValue;
+		value	 uniform (0. 0. 0.);
+	}
+
+	Allungamenti
+	{
+		type fixedValue;
+		value	 uniform (0. 0. 0.);
+	}
+
+	Out_top_succlaviasx_1
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_top_carotidedx_2
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_top_succlaviadx_3
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_top_carotidesx_4
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+        Out_top_carotideintdx_5
+        {
+                type      freestream;
+                freestreamValue     $internalField;
+        }
+
+	Out_lat_celiaca_4
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_lat_mesenterica_3
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_lat_renaledx_2
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_lat_renalesx_1
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_bot_iliacasx_1
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_bot_iliacaintsx_2
+	{
+		type       freestream;
+                freestreamValue      $internalField;
+	}
+
+	Out_bot_iliacadx_1
+	{
+		type        freestream;
+                freestreamValue       $internalField;
+	}
+
+	Out_bot_iliacaintdx_4
+	{
+		type      freestream;
+               freestreamValue      $internalField;
+	}
+
+	Inlet
+	{
+            type codedFixedValue;
+            value uniform (0 0 0);
+
+                redirectType   VelFourier;
+                // name VelFourier;
+                                    
+                    code
+                    #{
+                         const fvPatch& boundaryPatch = patch();
+                         const vectorField& Cf = boundaryPatch.Cf();
+                         vectorField& field = *this;
+                         const scalar &t = this ->db().time().value();     //lettura del tempo
+                         const scalar a0=0.1152;
+                         const scalar a1=0.06941;
+                         const scalar b1=0.1772;
+                         const scalar a2=-0.112;
+                         const scalar b2=0.07215;
+                         const scalar a3=-0.04831;
+                         const scalar b3=-0.03095;
+                         const scalar a4=-0.01316;
+                         const scalar b4=-0.004442;
+                         const scalar a5=-0.01729;
+                         const scalar b5=-0.03011;
+                         const scalar a6=0.01427;
+                         const scalar b6=-0.005475;
+                         const scalar a7=-0.0022805;
+                         const scalar b7=-0.001794;
+                         const scalar a8=0.006115;
+                         const scalar b8=-0.0003022;
+                         const scalar w=6.541;
+                         forAll(Cf, faceI)
+                         {
+                           field[faceI]=vector(0, 0, a0+a1*cos(t*w)+b1*sin(t*w)+a2*cos(2*t*w)+b2*sin(2*t*w)+a3*cos(3*t*w)+b3*sin(3*t*w)+a4*cos(4*t*w)+b4*sin(4*t*w)+a5*cos(5*t*w)+b5*sin(5*t*w)+a6*cos(6*t*w)+b6*sin(6*t*w)+a7*cos(7*t*w)+b7*sin(7*t*w)+a8*cos(8*t*w)+b8*sin(8*t*w));
+                                          
+                         }
+                   #};
+	}		
+}	
