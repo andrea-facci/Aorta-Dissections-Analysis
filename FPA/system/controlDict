@@ -1,0 +1,525 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pisoFoam;
+
+startFrom       startTime;  
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         4;
+
+deltaT          0.001;
+
+writeControl adjustableRunTime;
+writeInterval   5e-2;
+
+//writeControl    timeStep;
+
+//writeInterval   1;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   4;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxCo           0.8;
+
+functions
+{
+      #includeFunc "flowRatePatch(name=Inlet)"
+      #includeFunc "flowRatePatch(name=Out_top_1)"
+      #includeFunc "flowRatePatch(name=Out_top_2)"
+      #includeFunc "flowRatePatch(name=Out_top_3)"
+      #includeFunc "flowRatePatch(name=Out_top_4)"
+      #includeFunc "flowRatePatch(name=Out_main_lat_1)"
+      #includeFunc "flowRatePatch(name=Out_main_lat_2)"
+      #includeFunc "flowRatePatch(name=Out_main_lat_3)"
+      #includeFunc "flowRatePatch(name=Out_main_lat_4)"
+      #includeFunc "flowRatePatch(name=Out_dissec_lat_1)"
+      #includeFunc "flowRatePatch(name=Out_main_bott_1)"
+      #includeFunc "flowRatePatch(name=Out_main_bot_2)"
+      #includeFunc "flowRatePatch(name=Out_dissec_bot_1)"
+      #includeFunc "flowRatePatch(name=Out_dissec_bot_2)"
+      #includeFunc "patchAverage(name=Inlet,p)" 
+      #includeFunc "patchAverage(name=Out_top_1,p)"
+      #includeFunc "patchAverage(name=Out_top_2,p)"
+      #includeFunc "patchAverage(name=Out_top_3,p)"
+      #includeFunc "patchAverage(name=Out_top_4,p)"
+      #includeFunc "patchAverage(name=Out_main_lat_1,p)"
+      #includeFunc "patchAverage(name=Out_main_lat_2,p)"
+      #includeFunc "patchAverage(name=Out_main_lat_3,p)"
+      #includeFunc "patchAverage(name=Out_main_lat_4,p)"
+      #includeFunc "patchAverage(name=Out_dissec_lat_1,p)"
+      #includeFunc "patchAverage(name=Out_main_bott_1,p)"
+      #includeFunc "patchAverage(name=Out_main_bot_2,p)" 
+      #includeFunc "patchAverage(name=Out_dissec_bot_1,p)"     
+      #includeFunc "patchAverage(name=Out_dissec_bot_2,p)"
+      
+      #includeFunc "residuals"
+ //    #include "surfaces"
+}
+functions
+{
+surfaceFieldValueP(inlet)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.161 0.183 -0.12);
+            normal  (0 0 1);
+         }
+         
+        zone inlet;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            inlet;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_top_1)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.1918 0.216 -0.018);
+            normal  (0.09 0.13 0.98);
+         }
+         
+        zone top1;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_top_1;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_top_2)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.175 0.209 -0.022);
+            normal  (0.016 0.107 0.994);
+         }
+         
+        zone top2;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_top_2;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_top_3)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.188 0.165 -0.016);
+            normal  (0.058 -0.846 0.529);
+         }
+         
+        zone top3;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_top_3;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Out_top_4)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.16925 0.1789 -0.02);
+            normal  (-0.147 -0.565 0.811);
+         }
+         
+        zone top4;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+      libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_top_4;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_main_lat_1)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.195 0.194 -0.28);
+            normal  (-0.198 -0.96 0.19);
+         }
+         
+        zone mainlat1;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_lat_1;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_main_lat_2)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.179 0.22 -0.289);
+            normal  (-0.17 0.98 0.08);
+         }
+         
+        zone mainlat2;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_lat_2;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_main_lat_3)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.178 0.216 -0.3079);
+            normal  (-0.99 0.115 -0.02);
+         }
+         
+        zone mainlat3;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_lat_3;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_main_lat_4)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.22 0.25 -0.322);
+            normal  (-0.08 0.816 0.571);
+         }
+         
+        zone mainlat4;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_lat_4;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+
+surfaceFieldValueP(Out_dissec_lat_1)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.233 0.175 -0.321);
+            normal  (0.20 -0.91 -0.347);
+         }
+         
+        zone disselat1;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_dissec_lat_1;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_main_bot_1)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.214 0.189 -0.442);
+            normal  (0.92 -0.089 -0.385);
+         }
+         
+        zone mainbot1;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_bot_1;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+surfaceFieldValueP(Out_main_bot_2)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.216 0.219 -0.43);
+            normal  (0.279 0.568 -0.774);
+         }
+         
+        zone mainbot2;
+        exposedPatchName Main;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_main_bot_2;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_dissec_bot_1)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.226 0.248 -0.465);
+            normal  (-0.023 0.71 -0.7);
+         }
+         
+        zone dissebot1;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_dissec_bot_1;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+
+surfaceFieldValueP(Out_dissec_bot_2)
+   {
+       regionType    sampleadSurface;
+       name        sampleSurfaceDict;
+
+       sampledSurfaceDict
+       {           
+          type            cuttingPlane;
+          planeType       pointAndNormal;
+         pointAndNormalDict
+        {
+            point   (0.23 0.183 -0.46);
+            normal  (0.98 -0.078 0.122);
+         }
+         
+        zone dissebot2;
+        exposedPatchName Dissecazione;
+         interpolate     true;
+       }
+       type            surfaceFieldValue;
+       libs            ("libfieldFunctionObjects.so");
+       writeControl    timeStep;
+       log             no;
+       writeFields     no;
+       regionType      sampledSurface;
+       name            Out_dissec_bot_2;
+       operation       areaAverage;
+       fields
+       (p);
+   }
+}
+
+
+// ********************************************************************** //
