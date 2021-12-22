@@ -1,0 +1,103 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      k;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 0.13;
+
+boundaryField
+{
+    Inlet
+    {
+        type            fixedValue;
+        value           uniform 0.13;
+    }
+    Out_top_1
+    {
+        type            zeroGradient;
+    }
+    Out_top_2
+    {	
+        type		zeroGradient;
+    }
+    Out_top_3
+    {
+        type            zeroGradient;
+    }
+    Out_top_4
+    {
+        type            zeroGradient;
+    }
+    Out_main_lat_1
+    {
+        type            zeroGradient;
+    }
+    Out_main_lat_2
+    {
+        type            zeroGradient;
+    }
+    Out_main_lat_3
+    {
+        type            zeroGradient;
+    }
+    Out_main_lat_4
+    {
+        type            zeroGradient;
+    }
+    Out_dissec_lat_1
+    {
+        type            zeroGradient;
+    }
+    Out_dissec_bot_1
+    {
+        type            zeroGradient;
+    }
+    Out_dissec_bot_2
+    {
+        type            zeroGradient;
+    }
+    Out_main_bott_1
+    {
+        type            zeroGradient;
+    }
+    Out_main_bot_2
+    {
+        type            zeroGradient;
+    }
+    Dissecazione
+    {
+        type            fixedValue;
+        value           uniform 10e-10;
+    }
+    Main
+    {
+        type            fixedValue;
+        value           uniform 10e-10;
+    }
+    Allungamenti
+    {
+       type            fixedValue;
+       value           uniform 10e-10;
+    }
+    
+    
+
+               
+}
+
+
+// ************************************************************************* //

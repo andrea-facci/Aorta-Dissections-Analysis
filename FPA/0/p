@@ -1,0 +1,487 @@
+/*------------------------------------------------------------------------------------------------------------------------------------*\
+|                                                                                                                                      | 
+|    ANSA_VERSION: 15.2.0                                                                                                              | 
+|                                                                                                                                      | 
+|    file created by  A N S A  Thu May 16 15:02:57 2019                                                                                | 
+|                                                                                                                                      | 
+|    Output from: /home/PapersInProgress/Abbandonati/Aorta/Geometria/Rossi/Completo_reshape_reduce_surf_mesh+Layer+Vol_PolyMesh.ansa   | 
+|                                                                                                                                      | 
+\*------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class volScalarField;
+	location "";
+	object p;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+dimensions [0 2 -2 0 0 0 0];
+
+internalField uniform 0.;
+
+
+boundaryField
+{
+	Dissecazione
+	{
+
+          	type zeroGradient; 
+                
+	}
+
+	Main
+	{
+         
+      		type zeroGradient;
+
+	}
+        Allungamenti
+        {
+                type zeroGradient;
+                
+        }
+       
+        top_cap_fluid_allungamenti
+        {
+                type zeroGradient;
+               
+        }
+          
+	Out_top_1
+	{
+         
+                type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_1;
+               
+                                    
+                    code
+                    #{
+
+                 
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");     
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p");
+                      const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime()); 
+
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=1.41e-06;                           //  m*s  (normalizzato a ro)
+                    const scalar R1=2.12e+04;                               //   1/m*s (normalizzato a ro)
+                    const scalar R2=1.24e+06;                             //    1/m*s (normalizzato a ro)
+            
+
+                                             operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+
+                                                           
+
+                    #};
+
+
+	}
+
+	Out_top_2
+	{
+                
+                type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_2;
+               
+                                    
+                    code
+                    #{
+
+            
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");       
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+               
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                      
+                    const scalar C=3.94e-7;                           //  m*s  
+                    const scalar R1=8.37e+04;                               //   1/m*s 
+                    const scalar R2=4.46e+06;                             //    1/m*s 
+           
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+
+                                                       
+
+                    #};
+
+	}
+
+	Out_top_3
+	{
+                type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_3;
+               
+                                    
+                    code
+                    #{
+
+               
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                  
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                     const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=1.11e-06;                           //  m*s  
+                    const scalar R1=2.20e+04;                               //   1/m*s 
+                    const scalar R2=1.59e+06;                             //    1/m*s 
+             
+
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                
+                    #};
+
+	}
+
+	Out_top_4
+	{
+                type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_4;
+               
+                                    
+                    code
+                    #{
+
+                             
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");       
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                    
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=2.84e-07;                           //  m*s  
+                    const scalar R1=5.51e+04;                               //   1/m*s 
+                    const scalar R2=2.07e+06;                             //    1/m*s 
+            
+
+                                              operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                  
+
+                    #};     
+
+	}
+
+	Out_main_lat_1
+	{ 
+                type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_5;
+               
+                                    
+                    code
+                    #{
+
+           
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");       
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                   
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                     const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=4.05e-07;                           //  m*s  
+                    const scalar R1=2.32e+04;                               //   1/m*s 
+                    const scalar R2=4.39e+06;                             //    1/m*s 
+   
+
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                         
+
+                    #};     
+ 
+	}
+
+	Out_main_lat_2
+	{
+               type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_6;
+               
+                                    
+                    code
+                    #{
+
+           
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                      
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=9.79e-08;                           //  m*s  
+                    const scalar R1=1.19e+05;                               //   1/m*s 
+                    const scalar R2=1.82e+07;                             //    1/m*s 
+           
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                              
+
+                    #};     
+	}
+
+	Out_main_lat_3
+	{
+              type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_7;
+               
+                                    
+                    code
+                    #{
+
+                          
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                     
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                        
+                    const scalar C=3.88e-07;                           //  m*s  
+                    const scalar R1=5.05e+04;                               //   1/m*s 
+                    const scalar R2=4.57e+06;                             //    1/m*s 
+               
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                             
+
+                    #};     
+	}
+
+	Out_main_lat_4
+	{
+               type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_8;
+               
+                                    
+                    code
+                    #{
+
+                               
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                    
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p");
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                       
+                    const scalar C=2.71e-07;                           //  m*s  
+                    const scalar R1=9.32e+04;                               //   1/m*s 
+                    const scalar R2=6.51e+06;                             //    1/m*s 
+               
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                   
+
+                    #};     
+	}
+
+	Out_dissec_lat_1
+	{
+               type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_9;
+               
+                                    
+                    code
+                    #{
+
+                    
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+          
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                    
+                    const scalar C=9.76e-07;                           //  m*s  
+                    const scalar R1=3.62e+04;                               //   1/m*s 
+                    const scalar R2=1.80e+06;                             //    1/m*s 
+             
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                              
+
+                    #};     
+	}
+
+	Out_dissec_bot_1
+	{
+              type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_10;
+               
+                                    
+                    code
+                    #{
+
+                                  
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                      
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                       
+                    const scalar C=4.30e-06;                           //  m*s  
+                    const scalar R1=1.46e+04;                               //   1/m*s 
+                    const scalar R2=4.01e+05;                             //    1/m*s 
+              
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                             
+
+                    #};     
+	}
+
+	Out_dissec_bot_2
+	{
+               type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_11;
+               
+                                    
+                    code
+                    #{
+
+                                
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");       
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                    
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue(); 
+                        
+                    const scalar C=3.84e-06;                           //  m*s  
+                    const scalar R1=1.44e+04;                               //   1/m*s 
+                    const scalar R2=4.51e+05;                             //    1/m*s 
+             
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                              
+
+                    #};     
+	}
+
+	Out_main_bott_1
+	{
+         type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_12;
+               
+                                    
+                    code
+                    #{
+
+                               
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                     
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                    const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                       
+                    const scalar C=3.74e-07;                           //  m*s  
+                    const scalar R1=6.50e+04;                               //   1/m*s 
+                    const scalar R2=4.72e+06;                             //    1/m*s 
+           
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                                            
+
+                    #};     
+	}
+
+	Out_main_bot_2
+	{
+               type codedFixedValue;
+                value uniform 7.55;
+
+                name   pressureWindkessel_13;
+               
+                                    
+                    code
+                    #{
+
+                                       
+
+                     const surfaceScalarField& phi = db().lookupObject<surfaceScalarField>("phi");        
+                     const fvsPatchField<scalar>& phip=patch().patchField<surfaceScalarField,scalar>(phi);
+                      
+                     const fvsPatchField<scalar>&phip_old=patch().patchField<surfaceScalarField,scalar>(phi.oldTime());
+ 
+                      const volScalarField& p=db().lookupObject<volScalarField>("p"); 
+                   const fvPatchField<scalar>& pip_old=patch().patchField<volScalarField,scalar>(p.oldTime());
+                    const scalar &dt = this ->db().time().deltaTValue();  
+                       
+                    const scalar C=3.99e-07;                           //  m*s  
+                    const scalar R1=6.22e+04;                               //   1/m*s 
+                    const scalar R2=4.43e+06;                             //    1/m*s 
+                
+                                            operator==((1/(dt+(C*R2)))*((gSum(phip)*(R2*dt))*(1+(R1/R2))+C*R1*R2*(gSum(phip)-gSum(phip_old))+C*R2*(pip_old)));
+                                 
+                    #};     
+	}
+
+	Inlet
+	{
+  
+		type zeroGradient;
+	}
+
+
+}
