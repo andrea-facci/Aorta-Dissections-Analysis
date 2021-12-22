@@ -1,0 +1,102 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       volVectorField;
+    location    "0";
+    object      wallShearStress;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    Allungamenti
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Iliaca_sx_falso_lume
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Iliaca_sx
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Iliaca_dx
+    {
+        type            calculated;
+        value           uniform (-0 -0 -0);
+    }
+    Out_Renale_dx
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Mesenterica
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Tripode
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Carotide_sx
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_carotide_dx
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Tronco_anonimo
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_succlavia
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Inlet
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    True_lumen
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Out_Renale_sx
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+    Falso_lume
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
+}
+
+
+// ************************************************************************* //

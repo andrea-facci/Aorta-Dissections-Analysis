@@ -1,0 +1,113 @@
+/*----------------------------------------------------------------------------------------------------------------------------------------------*\
+|                                                                                                                                                | 
+|    ANSA_VERSION: 15.2.0                                                                                                                        | 
+|                                                                                                                                                | 
+|    file created by  A N S A  Wed Feb 17 10:50:35 2021                                                                                          | 
+|                                                                                                                                                | 
+|    Output from: /home/simona/DOTTORATO/Aorta_totalmente_trombizzata_3/modello_ansa/Aorta_tot_trombizzata.igs_layers_volume_poli_ruotata.ansa   | 
+|                                                                                                                                                | 
+\*----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format binary;
+	class volScalarField;
+	location "";
+	object k;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+dimensions [0 2 -2 0 0 0 0];
+
+internalField uniform 0.13;
+
+
+boundaryField
+{
+	Allungamenti
+	{
+		type fixedValue;
+              value  uniform 10e-10;
+	}
+
+	Out_Iliaca_sx_falso_lume
+	{
+		type zeroGradient;
+	}
+
+	Out_Iliaca_sx
+	{
+		type zeroGradient;
+	}
+
+	Out_Iliaca_dx
+	{
+		type zeroGradient;
+	}
+
+	Out_Renale_dx
+	{
+		type zeroGradient;
+	}
+
+	Out_Mesenterica
+	{
+		type zeroGradient;
+	}
+
+	Out_Tripode
+	{
+		type zeroGradient;
+	}
+
+	Out_Carotide_sx
+	{
+		type zeroGradient;
+	}
+
+	Out_carotide_dx
+	{
+		type zeroGradient;
+	}
+
+	Out_Tronco_anonimo
+	{
+		type zeroGradient;
+	}
+
+	Out_succlavia
+	{
+		type zeroGradient;
+	}
+
+	Inlet
+	{
+		type fixedValue;
+                value  uniform 0.13;
+	}
+
+	True_lumen
+	{
+		type fixedValue;
+              value  uniform 10e-10;
+	}
+
+	Out_Renale_sx
+	{
+		type zeroGradient;
+                
+	}
+
+	Falso_lume
+	{
+		type fixedValue;
+              value  uniform 10e-10;
+	}
+
+
+}
