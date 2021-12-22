@@ -1,0 +1,370 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      toposetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+  {
+   name inlet;
+   type cellSet;
+   action new;
+   source cylinderToCell;
+   sourceInfo
+   {
+     p1 (0.234 -0.2028 -0.169);
+     p2 (0.234 -0.2028 -0.1347);
+     radius 0.04;
+   }
+  }
+{
+   name inlet;
+   type cellZoneSet;
+  action new;
+  source setToCellZone;
+   sourceInfo
+  {
+   set inlet;
+   option all;
+  }
+}
+
+
+
+
+  {
+    name    topsucclaviasx1;
+    type    cellSet;
+    action  new;
+    source  cylinderToCell;
+    sourceInfo
+    {
+      p1 (0.2607 -0.2342 -0.00799);
+      p2 (0.2633 -0.23098 0.0068);
+      radius 0.006;
+    }
+  }
+
+
+ {
+    name topsucclaviasx1;
+    type cellZoneSet;
+    action new;
+    source setToCellZone;
+    sourceInfo
+    {
+      set topsucclaviasx1; // name of cellSet
+      option all;
+    }
+ }
+
+
+
+
+   {
+     name topcarotidesx4;
+     type cellSet;
+    action new;
+     source cylinderToCell;
+     sourceInfo
+    {
+        p1 (0.255 -0.2154 -0.0095136);
+        p2 (0.2555 -0.2163 0.008945);
+        radius 0.005;
+    }
+  }
+
+   {
+     name topcarotidesx4;
+     type cellZoneSet;
+    action new;
+    source setToCellZone;
+   sourceInfo
+    {
+      set topcarotidesx4;
+      option all;
+    }
+   }
+
+   {
+    name topsucclaviadx3;
+    type cellSet;
+    action new;
+    source cylinderToCell;
+   sourceInfo
+   {
+      p1 (0.23714 -0.201772 -0.01496);
+      p2 (0.2355 -0.2018 -0.003007);
+      radius 0.006;
+  }
+   }
+   {
+     name topsucclaviadx3;
+     type cellZoneSet;
+    action new;
+    source setToCellZone;
+    sourceInfo
+    {
+    set topsucclaviadx3;
+    option all;
+   }
+   }
+  
+{
+  name topcarotideintdx5;
+  type cellSet;
+  action new;
+  source cylinderToCell;
+   sourceInfo
+  {
+   p1 (0.2205 -0.20169 -0.0049);
+   p2 (0.2174 -0.2000 0.00167);
+   radius 0.004;
+  }
+}
+{
+ name topcarotideintdx5;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+  set topcarotideintdx5;
+  option all;
+ }
+}
+
+
+{
+ name topcarotidedx2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2207 -0.2083 -0.01228);
+  p2 (0.2099 -0.2167 0.0056);
+  radius 0.008;
+ }
+}
+{
+ name topcarotidedx2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set topcarotidedx2;
+ option all;
+ }
+}
+
+{
+ name latceliaca4;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.26477 -0.2425 -0.42448);
+  p2 (0.2696 -0.233 -0.42338);
+  radius 0.006;
+ }
+}
+{
+ name latceliaca4;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set latceliaca4;
+ option all;
+ }
+}
+
+{
+ name latmesenterica3;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2689 -0.23019 -0.4459);
+  p2 (0.2730 -0.2137 -0.443);
+  radius 0.006;
+ }
+}
+{
+ name latmesenterica3;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set latmesenterica3;
+ option all;
+ }
+}
+
+{
+ name latrenalesx1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2582 -0.2283 -0.4795);
+  p2 (0.2417 -0.21774 -0.4810);
+  radius 0.007;
+ }
+}
+{
+ name latrenalesx1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set latrenalesx1;
+ option all;
+ }
+}
+
+{
+ name latrenaledx2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.283 -0.2339 -0.4925);
+  p2 (0.3077 -0.2429 -0.49355);
+  radius 0.10;
+ }
+}
+{
+ name latrenaledx2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set latrenaledx2;
+ option all;
+ }
+}
+
+{
+ name botiliacadx1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2981 -0.2210 -0.7374);
+  p2 (0.3025 -0.2190 -0.7561);
+  radius 0.0065;
+ }
+}
+{
+ name botiliacadx1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set botiliacadx1;
+ option all;
+ }
+}
+
+{
+ name botiliacaintdx4;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2944 -0.2296 -0.7357);
+  p2 (0.2948 -0.2328 -0.7434);
+  radius 0.004;
+ }
+}
+{
+ name botiliacaintdx4;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set botiliacaintdx4;
+ option all;
+ }
+}
+
+{
+ name botiliacasx1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2403 -0.2174 -0.7412);
+  p2 (0.2399 -0.2181 -0.7535);
+  radius 0.006;
+ }
+}
+{
+ name botiliacasx1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set botiliacasx1;
+ option all;
+ }
+}
+
+{
+ name botiliacaintsx2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.2425 -0.226 -0.741);
+  p2 (0.2416 -0.2303 -0.7531);
+  radius 0.004;
+ }
+}
+{
+ name botiliacaintsx2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set botiliacaintsx2;
+ option all;
+ }
+}
+
+
+);
+
+
+// ************************************************************************* //
