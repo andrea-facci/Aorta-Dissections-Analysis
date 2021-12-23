@@ -1,5 +1,0 @@
-The Geometries folder contains the mathematical models of the aortas in IGES format.
-- HA.iges is the model of healthy aorta;
-- FPA.iges is fully perfused aorta model;
-- PTA.iges is partially thrombosed aorta model;
-- FTA.iges is fully thrombosed aorta model.
