@@ -1,0 +1,133 @@
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------*\
+|                                                                                                                                                       | 
+|    ANSA_VERSION: 21.1.2                                                                                                                               | 
+|                                                                                                                                                       | 
+|    file created by  A N S A  Fri Sep  3 11:06:58 2021                                                                                                 | 
+|                                                                                                                                                       | 
+|    Output from: C:/DOTTORATO/Aorta_totalmente_trombizzata_3/modello_ansa/Modello_finale_modifica pid/Aorta_tot_trombizzata_volume_poli_ruotata.ansa   | 
+|                                                                                                                                                       | 
+\*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+FoamFile
+{
+	version 2.0;
+	format ascii;
+	class polyBoundaryMesh;
+	location "";
+	object boundary;
+}
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+
+15
+(
+
+	Allungamenti
+	{
+		type wall;
+		startFace 2388193;
+		nFaces 12774;
+	}
+
+	Out_Iliaca_sx_falso_lume
+	{
+		type wall;
+		startFace 2400967;
+		nFaces 98;
+	}
+
+	Out_Iliaca_sx
+	{
+		type wall;
+		startFace 2401065;
+		nFaces 99;
+	}
+
+	Out_Iliaca_dx
+	{
+		type wall;
+		startFace 2401164;
+		nFaces 112;
+	}
+
+	Out_Renale_dx
+	{
+		type wall;
+		startFace 2401276;
+		nFaces 104;
+	}
+
+	Out_Mesenterica
+	{
+		type wall;
+		startFace 2401380;
+		nFaces 80;
+	}
+
+	Out_Tripode
+	{
+		type wall;
+		startFace 2401460;
+		nFaces 97;
+	}
+
+	Out_Carotide_sx
+	{
+		type wall;
+		startFace 2401557;
+		nFaces 86;
+	}
+
+	Out_carotide_dx
+	{
+		type wall;
+		startFace 2401643;
+		nFaces 73;
+	}
+
+	Out_Tronco_anonimo
+	{
+		type wall;
+		startFace 2401716;
+		nFaces 116;
+	}
+
+	Out_succlavia
+	{
+		type wall;
+		startFace 2401832;
+		nFaces 103;
+	}
+
+	Inlet
+	{
+		type wall;
+		startFace 2401935;
+		nFaces 210;
+	}
+
+	True_lumen
+	{
+		type wall;
+		startFace 2402145;
+		nFaces 29192;
+	}
+
+	Out_Renale_sx
+	{
+		type wall;
+		startFace 2431337;
+		nFaces 102;
+	}
+
+	Falso_lume
+	{
+		type wall;
+		startFace 2431439;
+		nFaces 10972;
+	}
+
+)
