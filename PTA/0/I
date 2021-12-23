@@ -1,0 +1,112 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       volScalarField;
+    location    "0";
+    object      I;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 1;
+
+boundaryField
+{
+    Dissecazione
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Main
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_top_1
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_top_2
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_top_3
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_top_4
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_lat_1
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_lat_2
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_lat_3
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_lat_4
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_dissec_lat_1
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_bot_2
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_main_bott_1
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_dissec_bot_1
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Out_dissec_bot_2
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Inlet
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+    Allungamenti
+    {
+        type            calculated;
+        value           uniform 1;
+    }
+}
+
+
+// ************************************************************************* //
