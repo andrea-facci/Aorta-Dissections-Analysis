@@ -1,0 +1,369 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      toposetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+  {
+   name inlet;
+   type cellSet;
+   action new;
+   source cylinderToCell;
+   sourceInfo
+   {
+     p1 (0.161 0.179 -0.131);
+     p2 (0.161 0.179 -0.109);
+     radius 0.03;
+   }
+  }
+{
+   name inlet;
+   type cellZoneSet;
+  action new;
+  source setToCellZone;
+   sourceInfo
+  {
+   set inlet;
+   option all;
+  }
+}
+
+
+
+
+  {
+    name    top1;
+    type    cellSet;
+    action  new;
+    source  boxToCell;
+    sourceInfo
+    {
+     box  (0.182 0.21 -0.039) (0.222 0.4 -0.006);
+    }
+  }
+
+
+ {
+    name top1;
+    type cellZoneSet;
+    action new;
+    source setToCellZone;
+    sourceInfo
+    {
+      set top1; // name of cellSet
+      option all;
+    }
+ }
+
+
+
+
+   {
+     name top2;
+     type cellSet;
+    action new;
+     source cylinderToCell;
+     sourceInfo
+    {
+        p1 (0.171 0.204 -0.04);
+        p2 (0.177 0.211 -0.013);
+        radius 0.005;
+    //  box (0.176 0.204 -0.0037) (0.136 0.4 -0.006);
+    }
+  }
+
+   {
+     name top2;
+     type cellZoneSet;
+    action new;
+    source setToCellZone;
+   sourceInfo
+    {
+      set top2;
+      option all;
+    }
+   }
+
+   {
+    name top3;
+    type cellSet;
+    action new;
+    source cylinderToCell;
+   sourceInfo
+   {
+      p1 (0.184 0.172 -0.03);
+      p2 (0.196 0.154 -0.013);
+      radius 0.008;
+  }
+   }
+   {
+     name top3;
+     type cellZoneSet;
+    action new;
+    source setToCellZone;
+    sourceInfo
+    {
+    set top3;
+    option all;
+   }
+   }
+  
+{
+  name top4;
+  type cellSet;
+  action new;
+  source cylinderToCell;
+   sourceInfo
+  {
+   p1 (0.169 0.183 -0.028);
+   p2 (0.169 0.174 -0.0111);
+   radius 0.005;
+  }
+}
+{
+ name top4;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+  set top4;
+  option all;
+ }
+}
+
+
+{
+ name mainlat1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.197 0.206 -0.281);
+  p2 (0.194 0.168 -0.27);
+  radius 0.008;
+ }
+}
+{
+ name mainlat1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainlat1;
+ option all;
+ }
+}
+
+{
+ name mainlat2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.187 0.22 -0.287);
+  p2 (0.183 0.24 -0.287);
+  radius 0.006;
+ }
+}
+{
+ name mainlat2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainlat2;
+ option all;
+ }
+}
+
+{
+ name mainlat3;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.189 0.216 -0.304);
+  p2 (0.167 0.219 -0.312);
+  radius 0.007;
+ }
+}
+{
+ name mainlat3;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainlat3;
+ option all;
+ }
+}
+
+{
+ name mainlat4;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.227 0.246 -0.329);
+  p2 (0.227 0.262 -0.317);
+  radius 0.004;
+ }
+}
+{
+ name mainlat4;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainlat4;
+ option all;
+ }
+}
+
+{
+ name disselat1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.231 0.186 -0.318);
+  p2 (0.239 0.159 -0.331);
+  radius 0.007;
+ }
+}
+{
+ name disselat1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set disselat1;
+ option all;
+ }
+}
+
+{
+ name mainbot1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.212874 0.195672 -0.43977);
+  p2 (0.229 0.191 -0.449);
+  radius 0.0037;
+ }
+}
+{
+ name mainbot1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainbot1;
+ option all;
+ }
+}
+
+{
+ name mainbot2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.214 0.216 -0.424);
+  p2 (0.217 0.221 -0.435);
+  radius 0.0038;
+ }
+}
+{
+ name mainbot2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set mainbot2;
+ option all;
+ }
+}
+
+{
+ name dissebot1;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.229 0.234 -0.45);
+  p2 (0.224 0.26 -0.475);
+  radius 0.08;
+ }
+}
+{
+ name dissebot1;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set dissebot1;
+ option all;
+ }
+}
+
+{
+ name dissebot2;
+ type cellSet;
+ action new;
+ source cylinderToCell;
+ sourceInfo
+ {
+  p1 (0.223482 0.184834 -0.456488);
+  p2 (0.267 0.1837 -0.480);
+  radius 0.0085;
+ }
+}
+{
+ name dissebot2;
+ type cellZoneSet;
+ action new;
+ source setToCellZone;
+ sourceInfo
+ {
+ set dissebot2;
+ option all;
+ }
+}
+
+
+);
+
+
+// ************************************************************************* //
